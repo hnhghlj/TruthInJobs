@@ -10,6 +10,11 @@ from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# 确保日志目录存在（必须在导入 config 之前）
+LOGS_DIR = BASE_DIR / 'logs'
+if not LOGS_DIR.exists():
+    LOGS_DIR.mkdir(parents=True, exist_ok=True)
+
 # 加载环境变量
 env_file = BASE_DIR / '.env'
 if env_file.exists():
@@ -102,7 +107,7 @@ DATABASES = {
         'CONN_MAX_AGE': Config.DB_CONN_MAX_AGE,
         'OPTIONS': {
             'charset': 'utf8mb4',
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES',time_zone='+08:00'",
         },
     }
 }
@@ -260,11 +265,6 @@ LOGGING = {
             'style': '{',
             'datefmt': '%Y-%m-%d %H:%M:%S',
         },
-        'json': {
-            'format': '{"level": "{levelname}", "time": "{asctime}", "name": "{name}", "message": "{message}"}',
-            'style': '{',
-            'datefmt': '%Y-%m-%d %H:%M:%S',
-        },
     },
     'filters': {
         'require_debug_true': {
@@ -384,11 +384,6 @@ LOGGING = {
         'level': 'INFO',
     },
 }
-
-# 确保日志目录存在
-LOGS_DIR = BASE_DIR / 'logs'
-if not LOGS_DIR.exists():
-    LOGS_DIR.mkdir(parents=True, exist_ok=True)
 
 # 缓存配置
 CACHES = {

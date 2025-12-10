@@ -8,11 +8,15 @@ from django.conf import settings
 from django.conf.urls.static import static
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 from utils.health import HealthCheckView, ReadinessCheckView, LivenessCheckView
+from utils.home import HomeView
 
 # API版本
 API_VERSION = 'v1'
 
 urlpatterns = [
+    # 首页
+    path('', HomeView.as_view(), name='home'),
+    
     # Django 管理后台
     path('admin/', admin.site.urls),
     
@@ -21,13 +25,7 @@ urlpatterns = [
     path('ready/', ReadinessCheckView.as_view(), name='ready'),
     path('alive/', LivenessCheckView.as_view(), name='alive'),
     
-    # API endpoints (versioned)
-    path(f'api/{API_VERSION}/accounts/', include('apps.accounts.urls')),
-    path(f'api/{API_VERSION}/companies/', include('apps.companies.urls')),
-    path(f'api/{API_VERSION}/reviews/', include('apps.reviews.urls')),
-    path(f'api/{API_VERSION}/moderation/', include('apps.moderation.urls')),
-    
-    # API endpoints (兼容旧版本，不带版本号)
+    # API endpoints
     path('api/accounts/', include('apps.accounts.urls')),
     path('api/companies/', include('apps.companies.urls')),
     path('api/reviews/', include('apps.reviews.urls')),

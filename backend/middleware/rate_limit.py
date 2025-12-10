@@ -20,7 +20,9 @@ class RateLimitMiddleware:
     
     def __init__(self, get_response):
         self.get_response = get_response
-        self.enabled = Config.RATE_LIMIT_ENABLED
+        from django.conf import settings
+        # 开发环境禁用限流
+        self.enabled = Config.RATE_LIMIT_ENABLED and not settings.DEBUG
         self.rate_limit = Config.RATE_LIMIT_PER_MINUTE
     
     def __call__(self, request):
