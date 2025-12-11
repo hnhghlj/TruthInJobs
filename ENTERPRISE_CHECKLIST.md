@@ -191,22 +191,6 @@
 
 ---
 
-## 12. Docker 支持 ✅ 100%
-
-- [x] Dockerfile（多阶段构建）
-- [x] Docker Compose 配置
-- [x] 健康检查
-- [x] 数据卷管理
-- [x] 网络配置
-- [x] 环境变量配置
-
-**文件：**
-- `backend/Dockerfile`
-- `frontend/Dockerfile`
-- `docker-compose.yml`
-- `backend/.dockerignore`
-- `frontend/.dockerignore`
-
 ---
 
 ## 13. CI/CD ✅ 100%

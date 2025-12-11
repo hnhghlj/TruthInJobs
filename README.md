@@ -119,34 +119,6 @@
 
 ## 🚀 快速开始
 
-### 方式一：使用 Docker（推荐）
-
-```bash
-# 1. 克隆项目
-git clone https://github.com/yourusername/welfarewatch.git
-cd welfarewatch
-
-# 2. 配置环境变量
-cp backend/.env.example backend/.env
-# 编辑 .env 文件，修改必要的配置
-
-# 3. 启动所有服务
-docker-compose up -d
-
-# 4. 执行数据库迁移
-docker-compose exec backend python manage.py migrate
-
-# 5. 创建超级用户
-docker-compose exec backend python manage.py createsuperuser
-
-# 6. 访问应用
-# 前端: http://localhost
-# 后端API: http://localhost:8000
-# API文档: http://localhost:8000/api/docs/
-```
-
-### 方式二：本地开发
-
 #### 后端设置
 
 1. **安装并配置 MySQL 数据库**
@@ -361,25 +333,6 @@ make backup-db     # 备份数据库
 - `/ready/` - 就绪检查
 
 ## 🚀 生产部署
-
-### 使用 Docker Compose（推荐）
-
-```bash
-# 1. 配置生产环境变量
-cp backend/.env.example backend/.env
-# 编辑 .env，设置 ENVIRONMENT=production
-
-# 2. 启动服务
-docker-compose up -d
-
-# 3. 检查服务状态
-docker-compose ps
-
-# 4. 查看日志
-docker-compose logs -f
-```
-
-### 手动部署
 
 详细部署指南请参考：[DEPLOY.md](DEPLOY.md)
 

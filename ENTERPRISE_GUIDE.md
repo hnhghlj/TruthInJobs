@@ -31,7 +31,6 @@ WelfareWatch 是一个企业级的公司福利评价系统，采用前后端分�
 - Axios
 
 **DevOps：**
-- Docker + Docker Compose
 - GitHub Actions（CI/CD）
 - Pytest（测试）
 - Flake8 + Black（代码质量）
